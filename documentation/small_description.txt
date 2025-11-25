@@ -1,0 +1,56 @@
+Description:
+
+The goal is to:
+Clean and process the provided task1_d.json file (it is not valid JSON).
+Load the cleaned data into a PostgreSQL database.
+
+Create a summary table inside PostgreSQL with:
+publication year
+number of books published per year
+average price in USD (using €1 = $1.2)
+
+
+📂 Project Structure
+data/
+    task1_d.json       → raw input file (not valid JSON)
+src/
+    clean_and_ingest.py → Python script that cleans the file and inserts data
+sql/
+    create_books_table.sql    → script to create the main table
+    create_summary_books.sql  → script to create the summary table
+README.md
+
+🛠️ Steps to Run:
+
+1️⃣ Create PostgreSQL table
+Run the SQL from:
+sql/create_books_table.sql
+This will create the books table.
+
+
+2️⃣ Run the Python ingestion script
+Execute:
+python src/clean_and_ingest.py
+This script will:
+read the raw .json file
+fix its formatting
+convert it into valid JSON
+insert all rows into the books table we created before
+
+
+3️⃣ Create the summary table
+Run:
+sql/create_summary_books.sql
+This will generate the summary_books table containing:
+publication year
+number of books
+average price in USD
+
+4️⃣ View Results
+
+You can check the data with:
+
+SELECT * FROM books;
+SELECT * FROM summary_books;
+
+in database
