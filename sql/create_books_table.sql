@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS books (
+DROP TABLE IF EXISTS books;
+
+CREATE TABLE books (
     id VARCHAR(30) PRIMARY KEY,
     title TEXT,
     author TEXT,
